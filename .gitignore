@@ -1,0 +1,12 @@
+.DS_Store
+__MACOSX/
+Thumbs.db
+__pycache__/
+*.pyc
+
+.idea/
+.vscode/
+*.tmp
+*.log
+
+dist/
