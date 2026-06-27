@@ -1,0 +1,50 @@
+name: Build release assets
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install media tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg gifsicle webp
+
+      - name: Check manifest
+        run: python3 scripts/generate_manifest.py --check
+
+      - name: Build ZIP files
+        run: python3 scripts/build_release_assets.py --clean --jobs 2
+
+      - name: Verify ZIP files
+        run: python3 scripts/verify_release_assets.py --deep
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-assets
+          path: dist/release/*
+
+      - name: Upload to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: .github/release-notes.md
+          files: dist/release/*.zip
