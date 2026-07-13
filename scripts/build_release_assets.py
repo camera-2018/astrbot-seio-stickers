@@ -133,6 +133,8 @@ def require_tools(targets: set[str]) -> None:
     needs_ffmpeg = {"gif-optimized", "gif-240-500k", "webm", "telegram-webm"} & targets
     if needs_ffmpeg and not tool_path("ffmpeg"):
         missing.append("ffmpeg")
+    if "gif-240-500k" in targets and not tool_path("gifsicle"):
+        missing.append("gifsicle")
     if "webp" in targets and not tool_path("gif2webp") and not ffmpeg_supports_webp():
         missing.append("gif2webp or FFmpeg with libwebp_anim")
 
@@ -213,6 +215,7 @@ def custom_gif_filter(frame_rate: int | None, colors: int) -> str:
         filters.append(f"fps={frame_rate}")
     filters.extend(
         [
+            "format=rgba",
             f"scale={CUSTOM_GIF_SIZE}:{CUSTOM_GIF_SIZE}:"
             "force_original_aspect_ratio=decrease:flags=lanczos",
             f"pad={CUSTOM_GIF_SIZE}:{CUSTOM_GIF_SIZE}:(ow-iw)/2:(oh-ih)/2:color=0x00000000",
@@ -221,8 +224,10 @@ def custom_gif_filter(frame_rate: int | None, colors: int) -> str:
     )
     return (
         ",".join(filters)
-        + f";[s0]palettegen=max_colors={colors}:reserve_transparent=on[p];"
-        + "[s1][p]paletteuse=dither=bayer:bayer_scale=5:alpha_threshold=128"
+        + f";[s0]palettegen=max_colors={colors}:reserve_transparent=on:"
+        + "transparency_color=black[p];"
+        + "[s1][p]paletteuse=dither=bayer:bayer_scale=5:"
+        + "diff_mode=rectangle:alpha_threshold=128"
     )
 
 
@@ -256,48 +261,77 @@ def gifsicle_optimize(input_path: Path, output_path: Path, lossy: int | None = N
         shutil.copy2(input_path, output_path)
         return
 
-    command = [gifsicle, "-O3"]
+    command = [gifsicle, "-O3", "-Okeep-empty"]
     if lossy is not None:
         command.append(f"--lossy={lossy}")
     command.extend([str(input_path), "-o", str(output_path)])
     run(command)
 
 
+def gifsicle_resize_custom(input_path: Path, output_path: Path) -> None:
+    gifsicle = tool_path("gifsicle")
+    if not gifsicle:
+        raise RuntimeError("gifsicle is not available")
+
+    run(
+        [
+            gifsicle,
+            "-O3",
+            "-Okeep-empty",
+            "--resize",
+            f"{CUSTOM_GIF_SIZE}x{CUSTOM_GIF_SIZE}",
+            "--resize-method",
+            "lanczos3",
+            "--resize-colors",
+            "256",
+            str(input_path),
+            "-o",
+            str(output_path),
+        ]
+    )
+
+
+def gifsicle_recompress_custom(
+    input_path: Path,
+    output_path: Path,
+    colors: int,
+    lossy: int,
+) -> None:
+    gifsicle = tool_path("gifsicle")
+    if not gifsicle:
+        raise RuntimeError("gifsicle is not available")
+
+    command = [gifsicle, "-O3", "-Okeep-empty"]
+    if colors < 256:
+        command.extend(["--colors", str(colors)])
+    if lossy > 0:
+        command.append(f"--lossy={lossy}")
+    command.extend([str(input_path), "-o", str(output_path)])
+    run(command)
+
+
 def convert_custom_gif(input_path: Path, output_path: Path) -> None:
-    candidates: list[tuple[int | None, int]] = [
-        (None, 256),
-        (None, 192),
-        (None, 128),
-        (None, 96),
-        (None, 64),
-        (None, 48),
-        (None, 32),
-        (None, 24),
-        (None, 16),
-        (30, 128),
-        (30, 96),
-        (30, 64),
-        (30, 48),
-        (30, 32),
-        (24, 96),
-        (24, 64),
-        (24, 48),
-        (24, 32),
-        (20, 64),
-        (20, 48),
-        (20, 32),
-        (15, 48),
-        (15, 32),
-        (15, 24),
-        (15, 16),
-        (12, 32),
-        (12, 24),
-        (12, 16),
-        (10, 24),
-        (10, 16),
-        (8, 24),
-        (8, 16),
-        (6, 16),
+    gifsicle_candidates: list[tuple[int, int]] = [
+        (256, 0),
+        (256, 40),
+        (256, 80),
+        (256, 120),
+        (224, 80),
+        (192, 80),
+        (160, 80),
+        (128, 80),
+        (96, 80),
+        (64, 80),
+    ]
+    ffmpeg_candidates: list[tuple[int | None, int, tuple[int, ...]]] = [
+        *((None, colors, (80, 160)) for colors in (256, 192, 160, 128, 96, 64, 48, 32)),
+        *((25, colors, (80, 160)) for colors in (256, 192, 160, 128, 96, 64, 48)),
+        *((20, colors, (80, 160)) for colors in (192, 160, 128, 96, 64, 48)),
+        *((15, colors, (80, 160)) for colors in (128, 96, 64, 48, 32)),
+        *((12, colors, (80, 160)) for colors in (96, 64, 48, 32)),
+        *((10, colors, (80, 160)) for colors in (64, 48, 32)),
+        *((8, colors, (80, 160)) for colors in (48, 32, 24)),
+        *((6, colors, (80, 160)) for colors in (32, 24, 16)),
     ]
 
     best_path: Path | None = None
@@ -305,20 +339,47 @@ def convert_custom_gif(input_path: Path, output_path: Path) -> None:
 
     with tempfile.TemporaryDirectory(prefix="gif-240-500k-", dir=output_path.parent) as temp_dir:
         temp_root = Path(temp_dir)
-        for frame_rate, colors in candidates:
+        gifsicle_base = temp_root / f"{output_path.stem}.gifsicle-base.gif"
+        if tool_path("gifsicle"):
+            gifsicle_resize_custom(input_path, gifsicle_base)
+            for colors, lossy in gifsicle_candidates:
+                candidate_path = temp_root / (
+                    f"{output_path.stem}.keepfps.{colors}c.lossy{lossy}.gif"
+                )
+                gifsicle_recompress_custom(gifsicle_base, candidate_path, colors, lossy)
+                size = candidate_path.stat().st_size
+
+                if best_size is None or size < best_size:
+                    best_path = candidate_path
+                    best_size = size
+                if size <= CUSTOM_GIF_MAX_BYTES:
+                    shutil.copy2(candidate_path, output_path)
+                    log(
+                        f"gif-240-500k: {input_path.name}: keep frames, "
+                        f"{colors} colors, lossy {lossy} ({human_size(size)})"
+                    )
+                    return
+
+        for frame_rate, colors, lossy_levels in ffmpeg_candidates:
             candidate_path = temp_root / f"{output_path.stem}.{frame_rate or 'keep'}fps.{colors}c.gif"
             ffmpeg_custom_gif(input_path, candidate_path, frame_rate, colors)
 
-            optimized_path = temp_root / f"{candidate_path.stem}.opt.gif"
-            gifsicle_optimize(candidate_path, optimized_path)
-            size = optimized_path.stat().st_size
+            for lossy in lossy_levels:
+                optimized_path = temp_root / f"{candidate_path.stem}.lossy{lossy}.opt.gif"
+                gifsicle_optimize(candidate_path, optimized_path, lossy=lossy)
+                size = optimized_path.stat().st_size
 
-            if best_size is None or size < best_size:
-                best_path = optimized_path
-                best_size = size
-            if size <= CUSTOM_GIF_MAX_BYTES:
-                shutil.copy2(optimized_path, output_path)
-                return
+                if best_size is None or size < best_size:
+                    best_path = optimized_path
+                    best_size = size
+                if size <= CUSTOM_GIF_MAX_BYTES:
+                    shutil.copy2(optimized_path, output_path)
+                    frame_label = "keep frames" if frame_rate is None else f"{frame_rate} fps"
+                    log(
+                        f"gif-240-500k: {input_path.name}: fallback {frame_label}, "
+                        f"{colors} colors, lossy {lossy} ({human_size(size)})"
+                    )
+                    return
 
         assert best_path is not None
         shutil.copy2(best_path, output_path)
