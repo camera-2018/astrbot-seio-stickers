@@ -576,7 +576,7 @@ def write_manifest(target: Target, output_dir: Path, stickers: list[dict]) -> No
     manifest = {
         "name": PROJECT_NAME,
         "display_name": "AstrBot seio娘表情包",
-        "version": "2026.06",
+        "version": "2026.07",
         "format": target.key,
         "description": target.description,
         "stickers": stickers,

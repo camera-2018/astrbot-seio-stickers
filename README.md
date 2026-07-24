@@ -5,7 +5,7 @@
 <h1 align="center"><b>AstrBot seio娘表情包</b></h1>
 
 <p align="center">
-  共 145 个 seio娘动态表情
+  共 165 个 seio娘动态表情
   <br>
   素材画师 @失效药片 · 制作软件 <a href="https://emotelab.app/">@emotelab</a>
   <br>

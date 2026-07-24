@@ -1,7 +1,7 @@
 {
   "name": "astrbot-seio-stickers",
   "display_name": "AstrBot seio娘表情包",
-  "version": "2026.06",
+  "version": "2026.07",
   "description": "AstrBot seio娘 GIF 表情资源。",
   "stickers": [
     {
@@ -1018,6 +1018,146 @@
       "path": "stickers/145_魔法.gif",
       "size": 1381289,
       "sha256": "08391122ebf1e05cea6273d3834534c5fa318db33a4da31944e1dd116e7f118d"
+    },
+    {
+      "id": "146",
+      "name": "一切都好1",
+      "path": "stickers/146_一切都好1.gif",
+      "size": 3404560,
+      "sha256": "617046aec1b433d13f1f2c5c2feeacf384e71cea47e6f721a04d913ab41cb4f5"
+    },
+    {
+      "id": "147",
+      "name": "一切都好2",
+      "path": "stickers/147_一切都好2.gif",
+      "size": 3367852,
+      "sha256": "92396ec220367f89e366d07543dd4f2f35b5d5ccd6bd37d4deac7f6d2127de79"
+    },
+    {
+      "id": "148",
+      "name": "一切都好3",
+      "path": "stickers/148_一切都好3.gif",
+      "size": 3329614,
+      "sha256": "9a8e7d25bfd384f6ff80ad1e28004e5dc10ff9e3c13d76be27e38a0023b7106f"
+    },
+    {
+      "id": "149",
+      "name": "吉他",
+      "path": "stickers/149_吉他.gif",
+      "size": 2960976,
+      "sha256": "a913ce278fc3afd2e071a7be279f569cd4cdf23d74943857298c5a0d11399af8"
+    },
+    {
+      "id": "150",
+      "name": "墨镜循环",
+      "path": "stickers/150_墨镜循环.gif",
+      "size": 2770122,
+      "sha256": "5188fb3a163e6c52187c21223e9f09db6af21751c306afb4b8d733503c61cf48"
+    },
+    {
+      "id": "151",
+      "name": "奶酪糊脸",
+      "path": "stickers/151_奶酪糊脸.gif",
+      "size": 2599820,
+      "sha256": "916142ad6843386f48852fc193f1d2248e8ffaf2ce192fc5657d5c9ba48763d4"
+    },
+    {
+      "id": "152",
+      "name": "小丑1",
+      "path": "stickers/152_小丑1.gif",
+      "size": 3578007,
+      "sha256": "a2b7ef4ca5fbe650208022f91faaa6d9e9f788a3fd7edc5ac026165501878843"
+    },
+    {
+      "id": "153",
+      "name": "小丑2",
+      "path": "stickers/153_小丑2.gif",
+      "size": 3376395,
+      "sha256": "7c087e7d94ed67d20af6a309d5e389267644e42dec802b468a7c7050de3780b0"
+    },
+    {
+      "id": "154",
+      "name": "折扇",
+      "path": "stickers/154_折扇.gif",
+      "size": 2961530,
+      "sha256": "ac2c5b75a1e21159f9f063afcc23e6d339febc6ebec65df2a893d37b4603f6b7"
+    },
+    {
+      "id": "155",
+      "name": "拖鞋1",
+      "path": "stickers/155_拖鞋1.gif",
+      "size": 858836,
+      "sha256": "3171ef62a5a88575a3d882d22070c596a7eeee1daa7feb8113cdf969c45ad813"
+    },
+    {
+      "id": "156",
+      "name": "拖鞋2",
+      "path": "stickers/156_拖鞋2.gif",
+      "size": 5333499,
+      "sha256": "e4ed3c8fad43bc222b7250ad21e91809e44de40ef792999b0078499cd5bfac60"
+    },
+    {
+      "id": "157",
+      "name": "烧1",
+      "path": "stickers/157_烧1.gif",
+      "size": 3326910,
+      "sha256": "495eda0adc0014962703a1240b203162a3b2791ad99f4fb3ed011809635fb0d4"
+    },
+    {
+      "id": "158",
+      "name": "烧2",
+      "path": "stickers/158_烧2.gif",
+      "size": 3236507,
+      "sha256": "c20f85d78cf92c572ecd2f2585d55a6a686215bccb8f6538e066669e02a0bc33"
+    },
+    {
+      "id": "159",
+      "name": "电风扇1",
+      "path": "stickers/159_电风扇1.gif",
+      "size": 2102233,
+      "sha256": "188cbf8e976832f692c886abfa1a648a77c68d9b09e09e41a8559bd0bb1b18dc"
+    },
+    {
+      "id": "160",
+      "name": "电风扇2",
+      "path": "stickers/160_电风扇2.gif",
+      "size": 2063064,
+      "sha256": "34b9559d40af2ce8655a7675665162ac0b9a98e9fb5055445be7544f3abc07ed"
+    },
+    {
+      "id": "161",
+      "name": "眨眼",
+      "path": "stickers/161_眨眼.gif",
+      "size": 3338253,
+      "sha256": "a3fbf8b423eb0d578e3e9cfd5ad9dc1438a5e9dfd188367409c716fecaee5998"
+    },
+    {
+      "id": "162",
+      "name": "被击中(Bits)",
+      "path": "stickers/162_被击中(Bits).gif",
+      "size": 1716950,
+      "sha256": "35d509d79d54a1f0fcd96fa09a24968b6d2e47c9c71814eeb564d4f8a597ab9e"
+    },
+    {
+      "id": "163",
+      "name": "被击中(拖鞋)",
+      "path": "stickers/163_被击中(拖鞋).gif",
+      "size": 1725609,
+      "sha256": "f872bd9c24ca2431d5c4f23b2794733af86e755ad046567c1438a693c57f726e"
+    },
+    {
+      "id": "164",
+      "name": "被击中(爱心)",
+      "path": "stickers/164_被击中(爱心).gif",
+      "size": 1783330,
+      "sha256": "645d984c09521f83c32ada2f8c317774164775db4cfeef1d2457ca49d07bc8bd"
+    },
+    {
+      "id": "165",
+      "name": "被击中(硬币)",
+      "path": "stickers/165_被击中(硬币).gif",
+      "size": 1788810,
+      "sha256": "521136e848de77e96e2c40ad538a62b297196f00e531241a8a1553d9e8fc94de"
     }
   ]
 }
