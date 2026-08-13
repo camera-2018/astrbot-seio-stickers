@@ -1,7 +1,7 @@
 {
   "name": "astrbot-seio-stickers",
   "display_name": "AstrBot seio娘表情包",
-  "version": "2026.07",
+  "version": "2026.08",
   "description": "AstrBot seio娘 GIF 表情资源。",
   "stickers": [
     {
@@ -1158,6 +1158,167 @@
       "path": "stickers/165_被击中(硬币).gif",
       "size": 1788810,
       "sha256": "521136e848de77e96e2c40ad538a62b297196f00e531241a8a1553d9e8fc94de"
+    },
+    {
+      "id": "166",
+      "name": "一切都好4",
+      "path": "stickers/166_一切都好4.gif",
+      "size": 3369542,
+      "sha256": "9b33b59446749e3ee6da6eb5a031b4e79e8b44a08a5de5c250712f9546132ea6"
+    },
+    {
+      "id": "167",
+      "name": "一切都好5",
+      "path": "stickers/167_一切都好5.gif",
+      "size": 3337549,
+      "sha256": "f1d116890a3e362b34d903f8a158a60e9efac600be26f27e370ff92fb0618723"
+    },
+    {
+      "id": "168",
+      "name": "一切都好6",
+      "path": "stickers/168_一切都好6.gif",
+      "size": 3381487,
+      "sha256": "f9634f1e96eccb713ad38eaf87fa0bb42c9f95227cf78cf2f7007cb98001c490"
+    },
+    {
+      "id": "169",
+      "name": "切（剪刀）",
+      "path": "stickers/169_切（剪刀）.gif",
+      "size": 1418131,
+      "sha256": "db15288daced14eebc7b4d849fc39906e425ceecf4a02293438f38cb78eb74c6"
+    },
+    {
+      "id": "170",
+      "name": "加载（睡觉）",
+      "path": "stickers/170_加载（睡觉）.gif",
+      "size": 9021296,
+      "sha256": "020f160e449e5e17294f946f0d77f1f34309469dfb57377771440a4440e9de50"
+    },
+    {
+      "id": "171",
+      "name": "加载（茶咖啡杯）",
+      "path": "stickers/171_加载（茶咖啡杯）.gif",
+      "size": 9011247,
+      "sha256": "35c474ce94e843a5fef521f4a9cf09f082d01b98d397d0a6f1098769a0924d61"
+    },
+    {
+      "id": "172",
+      "name": "加载（马克杯）",
+      "path": "stickers/172_加载（马克杯）.gif",
+      "size": 9293497,
+      "sha256": "40d9a3d41e22d5e0479841c32fb5c1dd096f47382b4cb9933941b66c6a230e96"
+    },
+    {
+      "id": "173",
+      "name": "吐舌1",
+      "path": "stickers/173_吐舌1.gif",
+      "size": 1439135,
+      "sha256": "92aac39e7f0e1bacc7152360de0b283ab4970967b0c2295228f26f5c59af32f3"
+    },
+    {
+      "id": "174",
+      "name": "吐舌2",
+      "path": "stickers/174_吐舌2.gif",
+      "size": 1402775,
+      "sha256": "b2c5dc47982b1224d5430e4e57c5b57d352a053c7867aa8986a2b291a4dee126"
+    },
+    {
+      "id": "175",
+      "name": "吐舌3",
+      "path": "stickers/175_吐舌3.gif",
+      "size": 1447431,
+      "sha256": "0f11325f8e853d6d63ccc238c54471c04a16ca5d6b694c7e8580fed45530b5ac"
+    },
+    {
+      "id": "176",
+      "name": "吐舌4",
+      "path": "stickers/176_吐舌4.gif",
+      "size": 1459743,
+      "sha256": "1cc6681b174e4f859388456fd21233ff3544361c831df67877974c78e3bcf2aa"
+    },
+    {
+      "id": "177",
+      "name": "按",
+      "path": "stickers/177_按.gif",
+      "size": 2833128,
+      "sha256": "947e7a5954176f969ff8a4b77cb3b18bac121fef91ab44302746539924659ef5"
+    },
+    {
+      "id": "178",
+      "name": "按钮(拍击)",
+      "path": "stickers/178_按钮(拍击).gif",
+      "size": 675033,
+      "sha256": "9c08f7684c38a7c795ba6d9abdfee800c69c2ea98a671a31a0f7f2fd53ac8607"
+    },
+    {
+      "id": "179",
+      "name": "挤脸颊",
+      "path": "stickers/179_挤脸颊.gif",
+      "size": 1926460,
+      "sha256": "7518aad9ff60772b99af6420dba3533621ca5439f20c85b5bf57e423fe231859"
+    },
+    {
+      "id": "180",
+      "name": "揉头1",
+      "path": "stickers/180_揉头1.gif",
+      "size": 2150210,
+      "sha256": "a3ff7cfea68f60895c47510d30e22d0e57d2c6bd1a9c802721163eaeffb793f6"
+    },
+    {
+      "id": "181",
+      "name": "摸头2",
+      "path": "stickers/181_摸头2.gif",
+      "size": 788591,
+      "sha256": "e2958d0ae3124e5f6524b5d12bc7b70f59538256b2980c342ae1d0e34dec6ff9"
+    },
+    {
+      "id": "182",
+      "name": "碰鼻子",
+      "path": "stickers/182_碰鼻子.gif",
+      "size": 5243777,
+      "sha256": "78ab3d488f2de1044e824006624dc35e69b3d1bb0a7c7b26a4018176051f8301"
+    },
+    {
+      "id": "183",
+      "name": "礼物3",
+      "path": "stickers/183_礼物3.gif",
+      "size": 2713562,
+      "sha256": "f3fcfaf848209172080364147aec17fc7ce7a40378a56ba7a0e40c195369cded"
+    },
+    {
+      "id": "184",
+      "name": "耶",
+      "path": "stickers/184_耶.gif",
+      "size": 1994407,
+      "sha256": "1369fe57eb6600520b5d14348f6718937e2a96d375765db76628ad24d3d468f1"
+    },
+    {
+      "id": "185",
+      "name": "胜利1",
+      "path": "stickers/185_胜利1.gif",
+      "size": 2930634,
+      "sha256": "286286cbe2cb67132cff5c357d678e2bf66fb059bd94340b6f6afbb3d4889e92"
+    },
+    {
+      "id": "186",
+      "name": "茶1",
+      "path": "stickers/186_茶1.gif",
+      "size": 3586325,
+      "sha256": "f1b960af7428520409656e72289f0e70c61dbe52935ca4c5140f22c831ade624"
+    },
+    {
+      "id": "187",
+      "name": "茶2",
+      "path": "stickers/187_茶2.gif",
+      "size": 3517953,
+      "sha256": "4887b98b467d936aa58e202d1a80c3db60a2e9d8683422dc4e3a37aa44f35e6e"
+    },
+    {
+      "id": "188",
+      "name": "茶3",
+      "path": "stickers/188_茶3.gif",
+      "size": 6069655,
+      "sha256": "d3c04f5ffbd86f33044f7ca5828e100c31da06cc9682a4aa804b664a72c37e0f"
     }
   ]
 }

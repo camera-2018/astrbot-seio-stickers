@@ -66,7 +66,7 @@ def build_manifest() -> dict:
     return {
         "name": "astrbot-seio-stickers",
         "display_name": "AstrBot seio娘表情包",
-        "version": "2026.07",
+        "version": "2026.08",
         "description": "AstrBot seio娘 GIF 表情资源。",
         "stickers": stickers,
     }
